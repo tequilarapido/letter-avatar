@@ -1,0 +1,22 @@
+{
+    "name": "tequilarapido/letter-avatar",
+    "description": "Provide a simple way to create letter avatar images, like those in your Gmail inbox",
+    "keywords": ["letter", "avatar", "generator"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "tequilarapido.",
+            "email": "dev@tequilarapido.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "ext-gd": "*",
+        "stil/gd-text": "~1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "LetterAvatar\\": "src"
+        }
+    }
+}
