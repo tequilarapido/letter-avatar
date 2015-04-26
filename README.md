@@ -64,7 +64,29 @@ If you want, you can use any TTF font by setting the font file full path like so
 	$letterAvatar
 		->setBackgroundColors([255, 0, 0], [0, 255, 0], [0, 0, 255])
 		->generate('J')
-		->saveAsJpeg('/path/to/file.jpg');	
+		->saveAsJpeg('/path/to/file.jpg');
+			
+### Using the same background color 
+			
+You can chain multiple generation to keep the same background color. (Generating multiple sizes)			
 
+	$letterAvatar
+		->generate('J', 50)->saveAsJpeg('/path/to/50x50/file.jpg')
+		->generate('J', 100)->saveAsJpeg('/path/to/100x100/file.jpg');
+        		
+### Reset background color
+
+If you want you can reset background color (so that a new random one will be used) in the middle of chaining
+        	
+	$letterAvatar
+		->generate('J', 50)->saveAsJpeg('/path/to/50x50/file.jpg')
+		->generate('J', 100)->saveAsJpeg('/path/to/100x100/file.jpg')
+        ->resetBackgroundColor()
+        ->generate('C', 100)->saveAsJpeg('/path/to/100x100/file.jpg');
+
+        			
+        		
+		
+			
 
 	

@@ -39,6 +39,13 @@ class LetterAvatar
     private $backgroundColors;
 
     /**
+     * Background color that will be used
+     *
+     * @var array color used for background
+     */
+    private $backgroundColor;
+
+    /**
      * Font ratio
      * Used to calculate font size from image request size
      *
@@ -179,7 +186,7 @@ class LetterAvatar
     {
         $this->createImage(
             strtoupper($letter[0]),
-            $this->getRandomColor(),
+            $this->getBackgroundColor(),
             $this->getSize($size)
         );
 
@@ -191,11 +198,14 @@ class LetterAvatar
      *
      * @param     $path
      * @param int $quality
+     * @return $this
      */
     public function saveAsPng($path, $quality = 9)
     {
         imagepng($this->img, $path, $quality);
         imagedestroy($this->img);
+
+        return $this;
     }
 
     /**
@@ -203,11 +213,24 @@ class LetterAvatar
      *
      * @param     $path
      * @param int $quality
+     * @return $this
      */
     public function saveAsJpeg($path, $quality = 100)
     {
         imagejpeg($this->img, $path, $quality);
         imagedestroy($this->img);
+
+        return $this;
+    }
+
+    /**
+     * Reset background color to null, so that the next generation use
+     * a new random color
+     */
+    public function resetBackgroundColor()
+    {
+        $this->backgroundColor = null;
+        return $this;
     }
 
     /**
@@ -235,14 +258,28 @@ class LetterAvatar
     }
 
     /**
-     * Returns a random color
+     * Returns a random background color
      *
      * return  array rgb color
      */
-    protected function getRandomColor()
+    protected function getRandomBackgroundColor()
     {
         $colors = $this->getBackgroundColors();
         return $colors[array_rand($colors)];
+    }
+
+    /**
+     * Returns color that will be used as background
+     *
+     * @return Color
+     */
+    protected function getBackgroundColor()
+    {
+        if (empty($this->backgroundColor)) {
+            $this->backgroundColor = $this->getRandomBackgroundColor();
+        }
+
+        return $this->backgroundColor;
     }
 
     /**
@@ -269,4 +306,5 @@ class LetterAvatar
 
         return $size;
     }
+
 }
