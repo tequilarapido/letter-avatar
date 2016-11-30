@@ -71,7 +71,7 @@ If you want, you can use any TTF font by setting the font file full path like so
 ### Background colors palette
 
 	$letterAvatar
-		->setBackgroundColors([255, 0, 0], [0, 255, 0], [0, 0, 255])
+		->setBackgroundColors([[255, 0, 0], [0, 255, 0], [0, 0, 255]])
 		->generate('J')
 		->saveAsJpeg('/path/to/file.jpg');
 			
