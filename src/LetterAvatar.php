@@ -61,6 +61,13 @@ class LetterAvatar
     private $textColor;
 
     /**
+     * Text Shadow
+     *
+     * @var boolean
+     */
+    private $showTextShadow = true;
+
+    /**
      * Set max size
      *
      * @param int $maxSize
@@ -175,6 +182,19 @@ class LetterAvatar
     }
 
     /**
+     * Show text shadow
+     *
+     * @param boolean $show
+     * @return $this
+     */
+    public function showTextShadow($show)
+    {
+        $this->showTextShadow = $show;
+        return $this;
+    }
+
+
+    /**
      * Generate a letter avatar and return image content
      * Background color is picked randomly.
      *
@@ -250,7 +270,9 @@ class LetterAvatar
         $box = new Box($this->img);
         $box->setFontFace($this->getFontFile());
         $box->setFontColor($this->getTextColor());
-        $box->setTextShadow(new Color(0, 0, 0, 50), 2, 2);
+        if($this->showTextShadow) {
+            $box->setTextShadow(new Color(0, 0, 0, 50), 2, 2);
+        }
         $box->setFontSize(round($size * $this->fontRatio));
         $box->setBox(0, 0, $size, $size);
         $box->setTextAlign('center', 'center');

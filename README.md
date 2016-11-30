@@ -59,6 +59,15 @@ If you want, you can use any TTF font by setting the font file full path like so
 		->generate('J')
 		->saveAsJpeg('/path/to/file.jpg');	
 		
+
+### Text shadow
+
+	$letterAvatar
+		->setTextColor([255, 0, 0])
+		->generate('J')
+		->showTextShadow(false)
+		->saveAsJpeg('/path/to/file.jpg');	
+		
 ### Background colors palette
 
 	$letterAvatar
