@@ -205,7 +205,7 @@ class LetterAvatar
     public function generate($letter, $size = null)
     {
         $this->createImage(
-            strtoupper($letter[0]),
+            function_exists('mb_strtoupper') ? mb_strtoupper($letter[0]) : strtoupper($letter[0]),
             $this->getBackgroundColor(),
             $this->getSize($size)
         );
