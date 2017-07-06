@@ -264,7 +264,7 @@ class LetterAvatar
     protected function createImage($letter, $color, $size)
     {
         $this->img = imagecreatetruecolor($size, $size);
-        $bgColor   = imagecolorallocate($this->img, $color[0], $color[2], $color[1]);
+        $bgColor   = imagecolorallocate($this->img, $color[0], $color[1], $color[2]);
         imagefill($this->img, 0, 0, $bgColor);
 
         $box = new Box($this->img);
